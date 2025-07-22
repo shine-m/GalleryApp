@@ -32,11 +32,23 @@ window.uploadFile = async function () {
 //
 
 // Close modal when clicking on the background (outside image)
-const modal = document.getElementById('imageModal');
 
-modal.addEventListener('click', (event) => {
-  // Only close if the clicked target is the modal itself, NOT the image
-  if (event.target === modal) {
+const modal = document.getElementById('imageModal');
+const closeBtn = document.getElementById('cross');
+
+function closeModal() {
+  modal.style.display = 'none';
+}
+// modal.addEventListener('click', (event) => {
+//   // Only close if the clicked target is the modal itself, NOT the image
+//   if (event.target === modal) {
+//     closeModal();
+//   }
+// });
+closeBtn.addEventListener('click', closeModal);
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
     closeModal();
   }
 });
@@ -47,9 +59,6 @@ function openModal(src) {
   modalImg.src = src;
 }
 
-function closeModal() {
-  modal.style.display = 'none';
-}
 
 
 // 
